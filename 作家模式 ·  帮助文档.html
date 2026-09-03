@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>作家模式 · 连环画创作终端 帮助文档</title>
+  <!-- 使用 Google Font 提升现代感 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <!-- Font Awesome 6 (免费图标库) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    /* 全局重置 & 字体 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #080c1a;
+      background-image: radial-gradient(circle at 20% 30%, #101a2e 0%, #03050a 100%);
+      font-family: 'Inter', sans-serif;
+      color: #e5e9f0;
+      line-height: 1.6;
+      padding: 2rem 1.5rem;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+    }
+
+    .doc-container {
+      max-width: 1100px;
+      width: 100%;
+      background: rgba(10, 15, 30, 0.7);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(0, 255, 255, 0.15);
+      border-radius: 40px;
+      padding: 2.5rem 2.8rem;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(0, 255, 255, 0.05) inset;
+      transition: all 0.2s ease;
+    }
+
+    /* 头部 */
+    .header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2.8rem;
+      border-bottom: 1px solid rgba(0, 255, 255, 0.1);
+      padding-bottom: 1.5rem;
+    }
+
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .logo-icon {
+      font-size: 2.2rem;
+      color: #0ff;
+      filter: drop-shadow(0 0 12px rgba(0, 255, 255, 0.4));
+    }
+
+    .logo-text {
+      font-weight: 700;
+      font-size: 1.8rem;
+      letter-spacing: -0.5px;
+      background: linear-gradient(135deg, #a0f0ff, #0af);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .badge {
+      background: rgba(0, 255, 255, 0.08);
+      border: 1px solid rgba(0, 255, 255, 0.2);
+      border-radius: 100px;
+      padding: 0.3rem 1.2rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #8cf;
+      letter-spacing: 0.5px;
+      backdrop-filter: blur(4px);
+    }
+
+    .badge i {
+      margin-right: 0.4rem;
+      color: #0ff;
+    }
+
+    /* 网格卡片布局 */
+    .grid-2col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.8rem;
+      margin: 2.2rem 0 1.5rem;
+    }
+
+    @media (max-width: 780px) {
+      .doc-container { padding: 1.5rem; }
+      .grid-2col { grid-template-columns: 1fr; gap: 1.2rem; }
+      .header { flex-direction: column; align-items: flex-start; gap: 0.8rem; }
+    }
+
+    /* 卡片风格 */
+    .card {
+      background: rgba(0, 10, 20, 0.5);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border-radius: 24px;
+      padding: 1.8rem 1.8rem 2rem;
+      border: 1px solid rgba(0, 255, 255, 0.06);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+      transition: transform 0.15s ease, border-color 0.2s;
+    }
+
+    .card:hover {
+      border-color: rgba(0, 255, 255, 0.2);
+      transform: translateY(-2px);
+    }
+
+    .card-title {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 1.3rem;
+      color: #d6eaff;
+    }
+
+    .card-title i {
+      color: #0ff;
+      font-size: 1.4rem;
+      width: 2rem;
+      text-align: center;
+    }
+
+    .card p, .card li {
+      color: #c8d0e0;
+      font-size: 0.95rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .card ul {
+      padding-left: 1.5rem;
+      list-style: none;
+    }
+
+    .card ul li {
+      position: relative;
+      padding-left: 1.6rem;
+      margin-bottom: 0.65rem;
+    }
+
+    .card ul li::before {
+      content: "▹";
+      position: absolute;
+      left: 0;
+      color: #0ff;
+      font-weight: 700;
+      opacity: 0.7;
+    }
+
+    .highlight {
+      background: rgba(0, 255, 255, 0.06);
+      border-radius: 12px;
+      padding: 0.2rem 0.6rem;
+      font-family: 'Inter', monospace;
+      font-weight: 500;
+      color: #b0f0ff;
+      border: 1px solid rgba(0, 255, 255, 0.08);
+      font-size: 0.85rem;
+    }
+
+    .inline-code {
+      background: rgba(0, 0, 0, 0.5);
+      padding: 0.1rem 0.5rem;
+      border-radius: 8px;
+      font-family: 'Inter', monospace;
+      font-size: 0.85rem;
+      color: #9cf;
+      border: 1px solid rgba(0, 255, 255, 0.08);
+    }
+
+    .feature-tag {
+      display: inline-block;
+      background: rgba(0, 255, 255, 0.08);
+      padding: 0.2rem 0.9rem;
+      border-radius: 30px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: #8cf;
+      letter-spacing: 0.3px;
+      border: 1px solid rgba(0, 255, 255, 0.1);
+      margin-right: 0.4rem;
+    }
+
+    .divider {
+      border: none;
+      height: 1px;
+      background: linear-gradient(to right, rgba(0,255,255,0), rgba(0,255,255,0.2), rgba(0,255,255,0));
+      margin: 2rem 0 1.8rem;
+    }
+
+    /* 快捷键网格 */
+    .shortcut-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.8rem 1.5rem;
+      margin-top: 0.5rem;
+    }
+
+    .shortcut-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.3rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.03);
+    }
+
+    .shortcut-key {
+      background: rgba(0, 0, 0, 0.5);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 6px;
+      padding: 0.1rem 0.7rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #b8d0ff;
+      font-family: 'Inter', monospace;
+    }
+
+    .shortcut-desc {
+      color: #b0c4de;
+      font-size: 0.85rem;
+    }
+
+    .workflow-note {
+      background: rgba(0, 50, 80, 0.25);
+      border-left: 3px solid #0ff;
+      padding: 0.8rem 1.2rem;
+      border-radius: 12px;
+      margin: 1.2rem 0;
+      font-size: 0.9rem;
+    }
+
+    .footer-note {
+      margin-top: 2.5rem;
+      text-align: center;
+      font-size: 0.85rem;
+      color: #6a7a9a;
+      border-top: 1px solid rgba(255,255,255,0.03);
+      padding-top: 1.8rem;
+    }
+
+    .footer-note i {
+      color: #0ff;
+      margin: 0 0.3rem;
+    }
+
+    /* 图片/图标点缀 */
+    .glow-text {
+      color: #0ff;
+      font-weight: 500;
+    }
+
+    .badge-version {
+      background: rgba(0, 255, 200, 0.05);
+      border-radius: 40px;
+      padding: 0.2rem 1rem;
+      font-size: 0.7rem;
+      border: 1px solid rgba(0, 255, 200, 0.15);
+      color: #8cf;
+    }
+
+    /* 响应式调节 */
+    @media (max-width: 480px) {
+      .shortcut-grid {
+        grid-template-columns: 1fr;
+      }
+      .doc-container { padding: 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="doc-container">
+
+  <!-- 头部 -->
+  <header class="header">
+    <div class="logo-area">
+      <span class="logo-icon"><i class="fas fa-pen-fancy"></i></span>
+      <span class="logo-text">作家模式 · 连环画</span>
+      <span class="badge-version"><i class="fas fa-code-branch"></i> v1.0</span>
+    </div>
+    <div class="badge">
+      <i class="fas fa-bolt"></i> 科幻 · 全屏 · 智能绑定
+    </div>
+  </header>
+
+  <!-- 描述 -->
+  <div style="margin-bottom: 1.8rem;">
+    <h1 style="font-weight: 600; font-size: 1.9rem; letter-spacing: -0.3px; background: linear-gradient(135deg, #d0eeff, #80c8ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; display: inline-block;">
+      <i class="fas fa-robot" style="color: #0ff; -webkit-text-fill-color: #0ff; margin-right: 12px;"></i> 智能连环画创作终端
+    </h1>
+    <p style="margin-top: 0.6rem; font-size: 1.05rem; color: #b8cbe0; max-width: 85%;">
+      集成 AI 文本生成 · 自动配图 · 本地/远程模型 · 漫画级视图管理
+    </p>
+  </div>
+
+  <!-- 核心功能 2列 -->
+  <div class="grid-2col">
+    <div class="card">
+      <div class="card-title"><i class="fas fa-feather-alt"></i> 写作 & 故事管理</div>
+      <ul>
+        <li><span class="highlight">全屏沉浸</span> 无干扰写作环境，科幻风格界面。</li>
+        <li><span class="highlight">流式生成</span> 支持 KoboldCPP / OpenAI / Claude / DeepSeek 等。</li>
+        <li><span class="highlight">自动保存</span> 故事内容、角色设定、图片绑定全自动持久化。</li>
+        <li><span class="highlight">多故事管理</span> 创建/重命名/删除故事，历史记录一目了然。</li>
+      </ul>
+      <div style="margin-top: 0.8rem;">
+        <span class="feature-tag"><i class="far fa-save"></i> 本地存储</span>
+        <span class="feature-tag"><i class="fas fa-cloud"></i> 远程 API</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><i class="fas fa-images"></i> 连环画 · 图片引擎</div>
+      <ul>
+        <li><span class="highlight">AI 配图</span> 根据文本片段智能生成场景图 (ComfyUI)。</li>
+        <li><span class="highlight">自动绑定</span> 图片与文本位置联动，滚动时自动切换。</li>
+        <li><span class="highlight">本地图片</span> 自动扫描 <span class="inline-code">/images/故事名/</span> 文件夹。</li>
+        <li><span class="highlight">高级查看器</span> 缩放、旋转、放大镜、全屏、拖拽浏览。</li>
+      </ul>
+      <div style="margin-top: 0.8rem;">
+        <span class="feature-tag"><i class="fas fa-magic"></i> ComfyUI</span>
+        <span class="feature-tag"><i class="fas fa-folder-open"></i> 本地加载</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 角色设定 + 浮动按钮 -->
+  <div class="grid-2col" style="margin-top: -0.2rem;">
+    <div class="card">
+      <div class="card-title"><i class="fas fa-user-astronaut"></i> 角色 & 场景设定</div>
+      <p><span class="highlight">👥 角色面板</span> 为每个故事独立维护角色/场景描述，AI 生成图片时自动融合。</p>
+      <ul>
+        <li>添加角色名称、外貌、服装、特征等。</li>
+        <li>生成图片时可选择使用哪些角色。</li>
+        <li>设定内容保存在故事中，切换故事自动加载。</li>
+      </ul>
+      <div style="background: rgba(0,200,255,0.04); border-radius: 12px; padding: 0.6rem 1rem; margin-top: 0.8rem; border: 1px dashed rgba(0,255,255,0.1);">
+        <i class="fas fa-lightbulb" style="color: #ffd966;"></i> 提示：角色描述越详细，AI 生成的图片越精准。
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><i class="fas fa-bolt"></i> 快捷操作 & 浮动面板</div>
+      <ul>
+        <li><span class="highlight">⚙ 配置</span> 连接 KoboldCPP / ComfyUI / 远程 API。</li>
+        <li><span class="highlight">📚 历史</span> 切换故事、重命名、删除。</li>
+        <li><span class="highlight">🎨 AI生成</span> 选中文本或当前章节，一键生成配图。</li>
+        <li><span class="highlight">📋 上下文模板</span> 快速插入 ChatML / 思考标签 / 自定义模板。</li>
+      </ul>
+      <div style="margin-top: 0.6rem; display: flex; gap: 0.5rem; flex-wrap: wrap;">
+        <span class="feature-tag"><i class="fas fa-pen"></i> Ctrl+Enter 发送</span>
+        <span class="feature-tag"><i class="fas fa-times"></i> Esc 关闭</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 快捷键区域 -->
+  <div class="card" style="margin: 0.6rem 0 0.8rem;">
+    <div class="card-title"><i class="fas fa-keyboard"></i> 快捷键 & 查看器控制</div>
+    <div class="shortcut-grid">
+      <div class="shortcut-item"><span class="shortcut-desc">发送消息 / 生成</span><span class="shortcut-key">Ctrl+Enter</span></div>
+      <div class="shortcut-item"><span class="shortcut-desc">关闭作家模式</span><span class="shortcut-key">Esc</span></div>
+      <div class="shortcut-item"><span class="shortcut-desc">放大镜开关</span><span class="shortcut-key">M</span></div>
+      <div class="shortcut-item"><span class="shortcut-desc">旋转图片</span><span class="shortcut-key">R</span></div>
+      <div class="shortcut-item"><span class="shortcut-desc">适应屏幕</span><span class="shortcut-key">F</span></div>
+      <div class="shortcut-item"><span class="shortcut-desc">滚轮缩放</span><span class="shortcut-key">鼠标滚轮</span></div>
+    </div>
+    <div style="margin-top: 0.8rem; background: rgba(0,255,255,0.02); border-radius: 16px; padding: 0.6rem 1rem; border: 1px solid rgba(0,255,255,0.04);">
+      <i class="fas fa-mouse-pointer" style="color: #0ff; margin-right: 0.5rem;"></i>
+      图片查看器支持拖拽平移、双击重置、拖拽缩放 (滚轮)。
+    </div>
+  </div>
+
+  <!-- 工作流 & 高级配置 -->
+  <div class="workflow-note">
+    <i class="fas fa-cogs" style="color: #0ff; margin-right: 12px;"></i>
+    <strong>工作流引擎</strong> · 自动检测提示词节点，支持自定义 JSON 工作流 (放入 <span class="inline-code">/json/</span> 文件夹)。可在配置面板「高级编辑」中切换节点。
+  </div>
+
+  <!-- 快速开始 / 使用说明 -->
+  <div style="display: flex; flex-wrap: wrap; gap: 1.2rem; margin: 1.5rem 0 0.8rem; justify-content: space-between;">
+    <div style="flex: 1; min-width: 200px; background: rgba(0,20,40,0.3); border-radius: 20px; padding: 1.2rem 1.6rem; border: 1px solid rgba(0,255,255,0.04);">
+      <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 0.6rem;">
+        <i class="fas fa-rocket" style="color: #0ff; font-size: 1.4rem;"></i>
+        <span style="font-weight: 600; font-size: 1.1rem;">快速上手</span>
+      </div>
+      <ol style="padding-left: 1.4rem; color: #c8d8ec; font-size: 0.9rem; line-height: 1.7;">
+        <li>点击右下角 <span class="highlight">✎ 作家模式</span> 进入全屏。</li>
+        <li>在 <span class="highlight">配置</span> 中设置 KoboldCPP / ComfyUI 地址。</li>
+        <li>编写故事，选中文本后点击 <span class="highlight">🎨 AI生成图片</span>。</li>
+        <li>使用 <span class="highlight">👥 角色设定</span> 增加角色，提升图片一致性。</li>
+        <li>图片自动绑定到文本位置，滚动即切换。</li>
+      </ol>
+    </div>
+    <div style="flex: 1; min-width: 200px; background: rgba(0,20,40,0.3); border-radius: 20px; padding: 1.2rem 1.6rem; border: 1px solid rgba(0,255,255,0.04);">
+      <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 0.6rem;">
+        <i class="fas fa-database" style="color: #0ff; font-size: 1.4rem;"></i>
+        <span style="font-weight: 600; font-size: 1.1rem;">本地资源</span>
+      </div>
+      <ul style="list-style: none; padding-left: 0; font-size: 0.9rem; color: #c8d8ec;">
+        <li style="padding: 0.25rem 0;"><i class="fas fa-folder-open" style="color: #0ff; width: 1.6rem;"></i> 图片自动扫描 <span class="inline-code">/WriterMode/images/故事名/</span></li>
+        <li style="padding: 0.25rem 0;"><i class="fas fa-file-code" style="color: #0ff; width: 1.6rem;"></i> 工作流 JSON 放在 <span class="inline-code">/WriterMode/json/</span></li>
+        <li style="padding: 0.25rem 0;"><i class="fas fa-user-edit" style="color: #0ff; width: 1.6rem;"></i> 角色设定、故事内容全自动保存</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 底部 -->
+  <div class="footer-note">
+    <i class="fas fa-crown" style="color: #ffd966;"></i> 科幻连环画 · 由 SillyTavern Writer Mode 驱动 
+    <span style="display: inline-block; margin: 0 10px;">·</span> 
+    <i class="fas fa-code"></i> 开源 · 自由创作
+    <br>
+    <span style="font-size: 0.75rem; color: #4a5a7a;">支持 KoboldCPP · ComfyUI · OpenAI · Claude · DeepSeek · 自定义</span>
+  </div>
+
+</div>
+</body>
+</html>
