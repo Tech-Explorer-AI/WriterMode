@@ -96,6 +96,10 @@ WriterMode/
 └── README.md              # 本文件
 ```
 
+自带的生图工作流用的是：anima-base-v1.0.safetensors
+以及放在comfyui，lora文件夹中，Anima/anima-turbo-lora-v0.2.safetensors中的加速lora。
+需要自行下载，当然也可以自己随意配置工作流。
+
 🤝 贡献
 欢迎提交 Issue 和 Pull Request！请确保代码风格一致，并附上清晰的变更说明。
 
