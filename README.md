@@ -31,11 +31,11 @@
 
 ### 安装步骤
 
-1. **克隆或下载** 本仓库到 SillyTavern 的 `plugins` 目录：
+1. **克隆或下载** 本仓库到 SillyTavern 的 `extension` 目录：
    ```bash
-   cd /path/to/SillyTavern/plugins
+   cd /path/to/SillyTavern/data/default-user/extensions
    git clone https://github.com/your-repo/WriterMode.git
-或者手动下载并解压到 SillyTavern/plugins/WriterMode。
+或者手动下载并解压到 SillyTavern/data/default-user/extensions/WriterMode。
 
 重启 SillyTavern，扩展会自动加载。您会在界面右下角看到 ✎ 作家模式 按钮。
 
