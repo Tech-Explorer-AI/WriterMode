@@ -1,0 +1,10 @@
+{
+  "display_name": "Writer Mode 🖋",
+  "description": "用于沉浸式写作的文本编辑器。",
+  "loading_order": 20,
+  "js": "index.js",
+  "css": "style.css",
+  "author": "技术探客",
+  "version": "0.0.1",
+  "minimum_client_version": "1.11.0"
+}
