@@ -4,7 +4,7 @@
 [![SillyTavern](https://img.shields.io/badge/SillyTavern-1.12+-0af?style=flat-square&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiMwYWYiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cGF0aCBkPSJNMTIgMkw4IDZ2MTJsNCA0IDQtNFY2eiIvPjxwYXRoIGQ9Ik0xMiAyTDIgMTB2NGwxMCA4IDEwLTh2LTRMMTIgMnoiLz48L3N2Zz4=)](https://docs.sillytavern.app/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](https://opensource.org/licenses/MIT)
 
-![Writer Mode Demo](https://via.placeholder.com/800x400/0a0e1a/0ff?text=⚡+Writer+Mode+%7C+Comic+Studio)
+![Writer Mode Demo](Writer-Mode-Demo.jpg)
 
 ---
 
