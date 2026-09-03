@@ -117,6 +117,8 @@ SillyTavern — 强大的 AI 角色扮演前端。
 
 KoboldCPP — 高效本地文本生成。
 
-ComfyUI — 模块化 Stable Diffusion 界面。
+ComfyUI — 丰富的自定义工作流。
 
-```<div align="center"> <sub>Built with ❤️ by the community. 科幻连环画，由你创作。</sub> <br> <sub>⭐ 如果这个项目对你有帮助，请给我们一个 Star！</sub> </div> ```
+Built with ❤️ by the community. AI写作，由你创作。
+
+⭐ 如果这个项目对你有帮助，请给我们一个 Star！
