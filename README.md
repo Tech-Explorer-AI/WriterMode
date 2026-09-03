@@ -48,7 +48,7 @@
 在 ComfyUI 配置 中填写 ComfyUI 服务地址 (默认 127.0.0.1:8188)。
 
 (可选) 将自定义 ComfyUI 工作流 JSON 文件放入 WriterMode/json/ 文件夹。
-
+```
 🎮 快速上手指南
 步骤	操作
 1	点击 ✎ 作家模式 进入全屏创作界面。
@@ -64,14 +64,19 @@ Esc	关闭作家模式 / 取消生成
 M	切换放大镜 (图片查看器)
 R	旋转当前图片
 F	适应屏幕
-鼠标滚轮	缩放图片
+鼠标滚轮	缩放
+图片
+```
 ⚙️ 配置详解
+
 API 类型
+
 本地 (KoboldCPP)：使用本地运行的 KoboldCPP 服务，无需 API 密钥。
 
 远程 API：支持 OpenAI、Claude (Anthropic)、DeepSeek 以及自定义 OpenAI 兼容端点。
 
 ComfyUI 工作流
+
 默认内置一个标准工作流模板。
 
 将自定义工作流 JSON 文件放入 WriterMode/json/ 文件夹，扩展会自动加载并在配置面板中显示。
@@ -79,6 +84,7 @@ ComfyUI 工作流
 支持自动检测提示词节点，也可在「高级编辑」中手动指定节点 ID 和字段名。
 
 存储说明
+
 所有数据 (故事内容、图片、绑定关系、角色设定) 均存储在浏览器本地 (IndexedDB + localStorage)。
 
 图片支持本地文件夹加载：将图片放入 WriterMode/images/故事名/，扩展会自动识别并按顺序加载。
